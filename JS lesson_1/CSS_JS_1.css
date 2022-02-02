@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    flex-wrap: wrap;
+}
+.let__one,
+.let__two{
+    font-family: "Roboto Light", sans-serif;
+    padding: 5px 15px;
+    background-color: #fde8ce;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px 0 black;
+    font-size: 18px;
+    margin: 8px;
+    color: #363636;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    display: flex;
+}
+.let__two {
+    background-color: #d3cefd;
+    color: black;
+}

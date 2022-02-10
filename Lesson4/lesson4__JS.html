@@ -94,7 +94,7 @@
   // створити функцію яка заповнює масив рандомними числами
 // function randomArray(quantity){
 //       let fillArray = []
-//     i=0
+//     let i=0
 //     while (i<quantity){
 //         fillArray.push((Math.round(Math.random()*100)))
 //         i++
@@ -187,7 +187,7 @@
   // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
 //   function createUl2(quantity,text){
 //       document.write('<ul>')
-//       for (i=0;i<quantity;i++){
+//       for (let i=0;i<quantity;i++){
 //           document.write(`<li>${text}</li>`)
 //       }
 //       document.write('</ul>')
@@ -197,7 +197,7 @@
   //____________________________________
   //- створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
 //   function primitiveElements(...qwe){
-//         i=0
+//         let i=0
 //       for (const Element of qwe) {
 //           document.write(`<li>${arguments[i]}</li>`)
 //           i++
@@ -257,7 +257,7 @@
 
   // function create(arr1,arr2){
   //     let newArray =[]
-  //     i=0
+  //     let i=0
   //     while (i<arr1.length) {
   //         ind1 = arguments[0][i]
   //         ind2 = arguments[1][i]
@@ -275,12 +275,29 @@
   // EXAMPLE:
   //     [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ name, age, model]
   let cars = [{name: 'Dima', age: 13}, {model: 'Camry'}]
-
+  function keysOf (array){
+      let empty = []
+      let empty2 = []
+      for (const Element of array) {
+          empty.push(Object.keys(Element))
+      }
+      return empty
+  }
+document.write(`<p>` + keysOf(cars) + `</p>`)
   //________________________________
   /*- Створити функцію яка приймає масив будь яких объектів, та повертає масив значень всіх обєктів
   EXAMPLE:
       [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]*/
 
+  // let cars = [{name: 'Dima', age: 13}, {model: 'Camry'}]
+function valueOf (array){
+      let empty = []
+    for (const arrayElement of array) {
+        empty.push(Object.values(arrayElement))
+    }
+    return empty
+}
+document.write(`<p>` + valueOf(cars) + `</p>`)
 </script>
 </body>
 </html>

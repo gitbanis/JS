@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 4</title>
+</head>
+<body>
+<script>
+  // =================ClassWork==================
+  // - створити функцію яка приймає три числа та виводить найменьше. (Без Math.min!)
+// function minNumber(a,b,c) {
+//   let res = a<b && a<c ? a + ', this is min number' : b<c && b<a ? b + ', this is min number' : c + ', this is min number'
+//   return res
+// }
+// document.write('<p>The number ' + minNumber(15,-8,3) + '</p>')
+//
+// //____________________________________
+// // - створити функцію яка приймає три числа та виводить найбільше. (Без Math.max!)
+//   function maxNumber(d,r,t){
+//   let max = d > r && d > t ? d + ', Okay, its maximum' : r > d && r > t ? r + ', 100% its maximum' : t > d && t > r ? t + ', This is maximum number' : 'Something wrong, dude'
+//   return max
+// }
+//   document.write('<p>The number ' + maxNumber(15,-8,3) + '</p>')
+//
+//   //____________________________________
+//   // - створити функцію яка повертає найбільше число з масиву
+// let array = [12,-5,48,48515,15,-15151]
+//   function arrayMax(temp) {
+//     let calcMax = Math.max(...temp)
+//       return calcMax
+//   }
+//   document.write('<p>Max number of array ' + arrayMax(array) + '</p>')
+//
+//   //______________________________________
+//   //- створити функцію яка повертає найменьше число з масиву
+// let array2 = [-1,2,-3,4,-5,6,-7,8,-9,0]
+//   function minArray(temp){
+//       let calcMin = Math.min(...temp)
+//       return calcMin
+//   }
+//   document.write('<p>Min number of array ' + minArray(array2) + '</p>')
+//
+//   //______________________________________
+//   //- створити функцію яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад [1,2,10]->13
+//   let summArray = [10,8,41,4,8,-1,(-16+4),(8/2),3*5]; // 10
+//   function sumElement (array){
+//       let sum = 0
+//       i=0
+//       while (i < array.length){
+//           sum += array[i]
+//           i++
+//       }
+//       return sum;
+//   }
+//   document.write('<p> Sum of array = ' + sumElement(summArray) + '</p>')
+//
+//   //________________________________________
+//   // - створити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.
+// function average(arr) {
+//     let aver = 0
+//     i=0
+//     while (i < arr.length) {
+//         aver += arr[i]
+//         i++
+//     }
+//     aver = aver/arr.length
+//     return aver
+// }
+// let massive = [10,-5,15]
+//   document.write('<p> Average of array = ' + average(massive) + '</p>')
+
+  //____________________________
+  //- створити функцію яка приймає будь-яку кількість чисел, повертає найменьше, а виводить найбільше (Math використовувати заборонено);
+ // function minMax(...qwerty){
+ //     let max = arguments[0]
+ //     let min = arguments[0]
+ //     for (const qwertyElement of qwerty) {
+ //         if (qwertyElement > max) {
+ //             max = qwertyElement
+ //         }else if (qwertyElement < min) {
+ //             min = qwertyElement
+ //         }
+ //     }
+ //     console.log('Найменшим числом є ' + min)
+ //     return 'Найільшим числом є ' + max
+ //      }
+ //
+ //  console.log(minMax(1, 2, 5, 4, 8, 4, 7, -5));
+
+  //________________________________________
+  // створити функцію яка заповнює масив рандомними числами
+// function randomArray(quantity){
+//       let fillArray = []
+//     i=0
+//     while (i<quantity){
+//         fillArray.push((Math.round(Math.random()*100)))
+//         i++
+//     }
+//     return fillArray
+// }
+// console.log(randomArray(10))
+
+
+  //_______________________________
+  //- створити функцію яка заповнює масив рандомними числами в діапазоні від 0 до limit. limit - аргумент, який характеризує кінцеве значення діапазону.
+// function randomLimits (quantity, limit) {
+//     let limitArr = []
+//     for (i=0; i<quantity; i++) {
+//         limitArr.push((Math.round(Math.random()*limit)))
+//     }
+//     return limitArr
+// }
+//   console.log(randomLimits(50, -18));
+
+//______________________________
+//Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
+// function reverse(...revTarget) {
+//     let newReverse = []
+//     for (i=revTarget.length-1;i>=0;i--) {
+//         newReverse.push(revTarget[i])
+//     }
+//     return newReverse
+// }
+//
+//   console.log(reverse(1,2,3,4,5,6,7,true,'falssse'));
+
+
+
+
+  // =================================HOMEWORK===========================
+
+  // - створити функцію яка обчислює та повертає площу прямокутника зі сторонами а і б
+
+  // function s (a,b) {
+  //     return 'Площа трикутника = ' + a * b
+  // }
+  // console.log(s(5, 3));
+
+  //_________________________________
+  //- створити функцію яка обчислює та повертає площу кола з радіусом r. Sкола= 3,14*r2
+//   function colo(r){
+//       return 'Площа кола = ' + 3.14 * Math.pow(r,2)
+//   }
+// console.log(colo(4))
+
+  //___________________________________
+  //- створити функцію яка обчислює та повертає площу циліндру висотою h, та радіутом r //Площа повної поверхні циліндра визначається як S=2πr(h+r)
+  // function cilindr(h,r){
+  //     return 'Площа повної поверхні циліндру = ' + (2*3.14*r)*(h * r)
+  // }
+  // console.log(cilindr(12,8))
+
+//___________________________________
+  //- створити функцію яка приймає масив та виводить кожен його елемент
+// function eachElement (arr){
+//     i=0
+//     while (i<=arr.length-1){
+//         console.log(arr[i])
+//         i++
+//     }
+// }
+//     let massiv = [17,25,50,5,10,12,15,-5]
+//   console.log(eachElement(massiv))
+
+  //_________________________________
+  //- створити функцію яка створює параграф з текстом. Текст задати через аргумент
+// function textP (words){
+//     document.write(`<p>${words}</p>`)
+// }
+// textP('black white')
+
+  //_________________________________
+  //- створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий
+  // function createUl(text){
+  //     document.write('<ul>')
+  //     document.write(`<li>${text}</li>`)
+  //     document.write(`<li>${text}</li>`)
+  //     document.write(`<li>${text}</li>`)
+  //     document.write('</ul>')
+  // }
+  // createUl('privet')
+
+  //__________________________________
+  // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
+//   function createUl2(quantity,text){
+//       document.write('<ul>')
+//       for (i=0;i<quantity;i++){
+//           document.write(`<li>${text}</li>`)
+//       }
+//       document.write('</ul>')
+//   }
+// createUl2(25,'Some text for li')
+
+  //____________________________________
+  //- створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
+//   function primitiveElements(...qwe){
+//         i=0
+//       for (const Element of qwe) {
+//           document.write(`<li>${arguments[i]}</li>`)
+//           i++
+//       }
+//   }
+// primitiveElements(true,2,3,'everething is good','pen')
+
+  //_________________________________
+  //- створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ. Для кожного об'єкту окремий блок.
+// function obj(massive){
+//     for (const massiveKey of massive) {
+//         document.write('<div>' + massiveKey.id + '</div>')
+//         document.write('<div>' + massiveKey.name + '</div>')
+//         document.write('<div>' + massiveKey.age + '</div><hr>')
+//     }
+// }
+//   function obj2(massive) {
+//       for (const Element of massive) {
+//           document.write(`<div><strong>${Element.id}</strong><h4>${Element.name}</h4>age - ${Element.age}</div><hr>`)
+//       }
+//   }
+//  let peaple = [
+//      {id: 1, name: "Andrew", age: 22},
+//      {id: 2, name: "Andrew2", age: 25},
+//      {id: 3, name: "Andrew3", age: 45},
+//      {id: 4, name: "Andrew4", age: 12},
+//      {id: 5, name: "Andrew5", age: 36},
+//      {id: 6, name: "Andrew6", age: 69},
+//      {id: 7, name: "Andrew7", age: 87},
+//  ]
+// //   obj(peaple)
+//    obj2(peaple)
+
+
+  // ==============================ADDITIONAL===============================
+
+
+  //________________________________________
+  //- створити функцію, яка якщо приймає один аргумент, просто вивдоить його, якщо два аргументи - складає або конкатенує їх між собою.
+// function concet(){
+//     let result
+//     if (arguments.length === 2){
+//         return  arguments[0]+arguments[1]
+//     } else {
+//         return  arguments[0]
+//     }
+// }
+//   console.log(concet(5,'8'));
+  //_________________________________________
+  /* - створити функцію  яка приймає два масиви та скаладає значення елементів з однаковими індексами  та повертає новий результуючий масив.
+      EXAMPLE:
+  [1,2,3,4]
+      [2,3,4,5]
+  результат
+      [3,5,7,9]*/
+
+
+  // function create(arr1,arr2){
+  //     let newArray =[]
+  //     i=0
+  //     while (i<arr1.length) {
+  //         ind1 = arguments[0][i]
+  //         ind2 = arguments[1][i]
+  //         console.log(ind2 + ind1)
+  //         newArray.push(ind2 + ind1)
+  //         i++
+  //     }
+  // }
+  // let array1 = [1,2,3,4]
+  // let array2 = [2,3,4,5]
+  // console.log(create(array1,array2))
+
+  //__________________________________
+  //- Створити функцію яка приймає масив будь яких объектів, та повертає масив ключів всіх обєктів
+  // EXAMPLE:
+  //     [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ name, age, model]
+  let cars = [{name: 'Dima', age: 13}, {model: 'Camry'}]
+
+  //________________________________
+  /*- Створити функцію яка приймає масив будь яких объектів, та повертає масив значень всіх обєктів
+  EXAMPLE:
+      [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]*/
+
+</script>
+</body>
+</html>

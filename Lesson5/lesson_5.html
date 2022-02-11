@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Java script. Lesson 5</title>
+    <style>
+        body{
+            padding: 0 25px;
+            font-family: monospace, sans-serif;
+            line-height: 25px;
+            width: 600px;
+            margin-left: 50px;
+            border: #363636 1px solid;
+            box-shadow: 1px 1px 3px 0;
+        }
+        h4{
+            color: #383838;
+            font-weight: 600;
+            padding: 6px 15px;
+            background-color: #ffffff;
+            border: #363636 1px solid;
+            box-shadow: 3px 3px 0 0;
+        }
+        p{
+            background-color: #ffd483;
+            padding: 5px 9px;
+        }
+        .array{
+            padding: 2px 6px;
+            background-color: #f5f5f5;
+            border: 1px solid black;
+            box-shadow: 3px 3px 0 0;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let br =(multipler)=>{for(let i=0;i<multipler;i++){document.write('<br>')}}
+    let hrbr =()=>document.write(`<hr><br>`)
+    let tagH4 = (text)=>document.write(`<h4>${text}</h4>`)
+    let dw = (text) =>document.write(`<span>${text}</span>`)
+    let masiv = [2,-1,0,100,20,-50]
+
+    // ===========================  classwork5  ===================
+  document.write(`<h2>Classwork 5</h2>`)
+  tagH4('1. Cтворити функцію яка приймає три числа та виводить найменьше. (Без Math.min!)')
+  let min = (a,b,c) => {
+      if (a<b && a<c){
+          document.write('Найменшим числом є ' + a)
+      } else if(b<a &&b<c){
+          document.write('Найменшим числом є ' + b)
+      } else if (c<a && c<b){
+          document.write('Найменшим числом є ' + c)
+      } else {
+          document.write('Щось пішло не так')
+      }
+  }
+  min(-25,3,0)
+  br(1)
+  //варіант тернарним методом
+  let min2 = (a,b,c) => (a<b && a<c) ? document.write('Найменшим числом є ' + a) : (b<a && b<c) ? document.write('Найменшим числом є ' + b) : (c<a && c<b) ? document.write('Найменшим числом є ' + c) : document.write('Щось пішло не так')
+  min2(-25,-33,0)
+hrbr()
+//___________________
+  tagH4('2. Cтворити функцію яка приймає три числа та виводить найбільше. (Без Math.max!)')
+  let max = (a,b,c) => {
+      if (a>b && a>c){
+          document.write('Найбільшим числом є ' + a)
+      } else if(b>a && b>c){
+          document.write('Найбільшим числом є ' + b)
+      } else if (c>a && c>b){
+          document.write('Найбільшим числом є ' + c)
+      } else {
+          document.write('Щось пішло не так')
+      }
+  }
+  max(-25,3,0)
+br(1)
+
+  //варіант тернарним методом
+  let max2 = (a,b,c) => (a>b && a>c) ? document.write('Найбільшим числом є ' + a) : (b>a && b>c) ? document.write('Найбільшим числом є ' + b) : (c>a && c>b) ? document.write('Найбільшим числом є ' + c) : document.write('Щось пішло не так')
+  max2(-25,-33,0)
+hrbr()
+//__________________
+  tagH4('3. Cтворити функцію яка повертає найбільше число з масиву.')
+  let arrayMax = (temp) => {
+      let max = temp[0]
+      for (const element of temp) {
+          if (max<element){
+              max = element
+          }
+      }
+      document.write('Найбільшим в масиві є число ' + max)
+  }
+arrayMax(masiv)
+hrbr()
+//__________________
+  tagH4('4. Cтворити функцію яка повертає найменше число з масиву.')
+let arrayMin = (temp) => {
+      let min = temp[0]
+    for (const minElement of temp) {
+        if (min > minElement){
+            min = minElement
+        }
+    }
+    document.write('Найменшим в масиві є число ' + min)
+}
+arrayMin(masiv)
+hrbr()
+//__________________
+  tagH4('5. Створити функцію яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад [1,2,10]->13\n')
+  let summury = (temp) =>{
+      let sum = 0
+      for (const sumElement of temp) {
+          sum = sum + sumElement
+      }
+      document.write('Сума елементів масиву = ' + sum)
+  }
+summury(masiv)
+hrbr()
+//__________________
+  tagH4('6. Cтворити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.\n')
+  let average = (temp) => {
+      let avrg = 0
+      for (const tempElement of temp) {
+          avrg += tempElement
+      }
+      document.write('Середнє арифметичне значення масиву = ' + (avrg/temp.length))
+  }
+average(masiv)
+hrbr()
+//__________________
+  tagH4('7. Cтворити функцію яка приймає будь-яку кількість чисел, повертає найменьше, а виводить найбільше (Math використовувати заборонено);\n')
+  let minMax = (...temp) => {
+      let min = temp[0]
+      let max = temp[0]
+      for (const element of temp) {
+          if (min > element){
+              min = element
+          } else if (max < element){
+              max = element
+          }
+      }
+      dw('console.log(' + max + ')<br>')
+      document.write('Найменше число масиву = ' + min)
+  }
+minMax(2,-1,0,100,20,-50)
+hrbr()
+//_________________
+  tagH4('8. Cтворити функцію яка заповнює масив рандомними числами.')
+  let random = (lenght) => {
+      let empty = []
+      for (let i=0; i < lenght; i++ ){
+          empty.push(Math.ceil(Math.random()*100))
+      }
+      document.write('Ви створили масив з '+lenght+' чисел: ' + empty)
+  }
+random(22)
+hrbr()
+//__________________
+  tagH4('9. Створити функцію яка заповнює масив рандомними числами в діапазоні від 0 до limit. limit - аргумент, який характеризує кінцеве значення діапазону.\n')
+  let randomLimit = (lenght, limit) =>{
+      let empty = []
+      for (let i=0; i<lenght;i++){
+          empty.push(Math.ceil(Math.random()*limit))
+      }
+      document.write('Ви створили масив з ' +lenght+ ' чисел та максимальним значенням ' +limit+ ': ' + empty)
+  }
+randomLimit(15,50)
+hrbr()
+//__________________
+    tagH4('10. Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].')
+    let reverse = (temp) =>{
+    let empty = []
+    for (let ri = temp.length - 1;ri>=0;ri--){
+        empty.push(temp[ri])
+    }
+    dw(empty)
+}
+reverse(masiv)
+    br(3)
+//========================================================
+  document.write('<h2>' + 'Homework 5' + '</h2>')
+    br()
+    //________________
+    tagH4('11. Cтворити функцію яка обчислює та повертає площу прямокутника.')
+    let spk = (a,b)=>dw('Площа прямокутника з довжиною сторін '+a+' та '+b+ ' = ' + a*b)
+    spk(10,15)
+    hrbr()
+    //________________
+    tagH4('12. Створити функцію яка обчислює та повертає площу кола\n')
+    let sKola=(radius)=>dw('Площа кола з радіусом ' + radius + ' = ' + (3.14*radius*2))
+        sKola(8)
+    hrbr()
+    //_______________
+    tagH4('13. Створити функцію яка обчислює та повертає площу циліндру\n.(S=2*Pi*r*h')
+    let sCilindra=(radius, height)=>dw('Площа бічної поверхні циліндру з радіусом ' + radius + ' та висотою '+height+' = '+(2*3.14*radius*height))
+    sCilindra(4,7)
+    hrbr()
+    //______________
+    tagH4('14. Створити функцію яка приймає масив та виводить кожен його елемент\n')
+    let eachElement=(temp)=>{
+        for (const tempElement of temp) {
+            dw(tempElement)
+            br(1)
+        }
+    }
+    eachElement(masiv)
+    hrbr()
+    //_____________
+    tagH4('15. Створити функцію яка  створює параграф з текстом. Текст задати через аргумент\n')
+    let tagP = (text)=>document.write(`<p>${text}</p>`)
+    tagP('Цей текст виведений за допомогою функцій та створений як параграф')
+    hrbr()
+    //_____________
+    tagH4('16. Cтворити функцію яка  створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий\n')
+    let ulCreator=(text)=>{
+        dw(`<ul>`)
+        dw(`<li>${text}</li>`)
+        dw(`<li>${text}</li>`)
+        dw(`<li>${text}</li>`)
+        dw(`</ul>`)
+    }
+    ulCreator(`Однаковий текст для створених ліжок`)
+    hrbr()
+    //_____________
+    tagH4('17. Cтворити функцію яка  створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)\n')
+    let ulCreator2=(limit, text)=> {
+        dw(`<ul>`)
+        for (let i = 1; i <= limit; i++) {
+            dw(`<li>${text}</li>`)
+        }
+        dw(`</ul>`)
+    }
+    ulCreator2(4, 'Однаковий тект для лімітованих ліжок')
+    hrbr()
+    //_____________
+    tagH4(`18. Cтворити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список`)
+    let primitiv = (temp)=>{
+        dw(`<ul>`)
+        for (const tempElement of temp) {
+            dw(`<li>${tempElement}</li>`)
+        }
+        dw(`</ul>`)
+    }
+primitiv([true, 'Some text', -154258, false, 'Crazy Piza'])
+    hrbr()
+    //_____________
+    tagH4('19. Cтворити функцію яка приймає масив об\'єктів з наступними полями id,name,age , та виводить їх в документ. Для кожного об\'єкту окремий блок.\n')
+    let array = [
+        {id: 1, name: 'Vlad', age: 40},
+        {id: 2, name: 'Vladiolus',age: 22},
+        {id: 3, name: 'Vladvandos',age: 35},
+        {id: 4, name: 'Vladiko',age: 76},
+        {id: 5, name: 'Vlados',age: 34},
+        {id: 6, name: 'Vladosina',age: 44},
+        {id: 7, name: 'Vladik',age: 12},
+        {id: 8, name: 'Vladoz',age: 21}
+    ]
+let rozbir=(temp)=>{
+    for (const tempElement of temp) {
+        dw('<div class="array">' + tempElement.id + ` - ` + tempElement.name+', ' + tempElement.age + '</div><br>')
+    }
+}
+rozbir(array)
+    br(3)
+    // ==========================  Additional  ==========================
+    document.write('<h2>' + 'Additional 5' + '</h2>')
+
+    tagH4('20. Дано натуральное число n. Выведите все числа от 1 до n.')
+    let natural=(n)=>{for (let i=1; i<=n;i++){dw('<span class="array">' + i + '</span><br>')}    }
+    natural(10)
+    hrbr()
+    //_____________
+    tagH4('21. Даны два целых числа A и В . Выведите все числа от A до B включительно, в порядке возрастания, если A < B, или в порядке убывания в противном случае.\n')
+    let naturalreverse=(a,b)=>{
+        if (a<b){
+            for (let i = a; i<=b;i++){
+                dw('<span class="array">' + i + '</span><br>')
+            }
+        }else if (a>b){
+            for (let ri=a; ri>=b; ri--){
+                dw('<span class="array">' + ri + '</span><br>')
+            }
+        }
+    }
+naturalreverse(18,10)
+    hrbr()
+    tagH4('22. Функція приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"\n' +'<br>'+
+    '  EXAMPLE:\n' +'<br>'+
+    '  foo([9,8,0,4], 0) // ==> [ 8, 9, 0, 4 ]\n' +'<br>'+
+    '  foo([9,8,0,4], 1) // ==> [ 9 ,0, 8, 4 ]\n' +'<br>'+
+    '  foo([9,8,0,4], 2) // ==> [ 9, 8, 4, 0 ]')
+
+    let arrayIndex=(temp, i)=>{
+    let empty = []
+        for (let j=0;j<i;j++){
+            empty.push(temp[j])
+        }
+        empty.push(temp[i+1])
+        empty.push(temp[i])
+        for (k=i+2;k<temp.length;k++){
+            empty.push(temp[k])
+        }
+        dw(empty)
+    }
+arrayIndex([9,8,0,4],0)
+    hrbr()
+    //______________
+    tagH4('23. Сворити функцію яка буде переносити елементи з значенням 0 у кінець маисву. Зберігаючи при цьому порядок не нульових значень.\n' +
+    'Двожина масиву від 2 до 100\n' +'<br>'+
+    'EXAMPLE:\n' +'<br>'+
+    '[1,0,6,0,3] => [1,6,3,0,0]\n' +'<br>'+
+    '[0,1,2,3,4] => [1,2,3,4,0]\n' +'<br>'+
+    '[0,0,1,0]   => [1,0,0,0]')
+
+    let zeroToEnd = (temp)=>{
+        let zeroBox = []
+        let newArray = []
+        for (const Element of temp) {
+            if (Element===0) {
+                zeroBox.push(Element)
+            } else if (Element>0 || Element<0){
+                newArray.push(Element)
+            }
+        }
+        for (const Element of zeroBox) {
+            newArray.push(Element)
+        }
+        dw(newArray)
+    }
+zeroToEnd([1,0,6,0,3,4,0,4,0,1,5,4,2,4,1,0,0,0,0,0,5,4,5,4,5,0,8])
+    hrbr()
+
+</script>
+</body>
+</html>

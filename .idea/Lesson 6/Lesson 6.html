@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java Script Lesson 6</title>
+    <style>
+        body{
+            margin: 0 auto;
+            width: 1200px;
+            background-color: #fde8ce;
+        }
+        #wrapper{
+            width: 1200px;
+            border: 1px solid black;
+            min-height: 100vh;
+            font-family: monospace, sans-serif;
+            padding: 0 22px;
+        }
+        .task__name{
+            display: flex;
+            margin-top: 42px;
+        }
+        .task__number{
+            max-width: 50px;
+            font-weight: 600;
+            font-size: 24px;
+            padding: 0 15px;
+            border-right: orangered 1px solid;
+            color: orangered;
+        }
+        .task__title{
+            align-self: center;
+            padding-right: 20px;
+            padding-left: 20px;
+            font-size: 18px;
+            color: #363636;
+            background-color: #ffd483;
+        }
+        .task__describe, .task__answer{
+            line-height: 1.35em;
+            padding-left: 25px;
+            margin: 22px 0 0 0;
+            border: 1px solid black;
+            box-shadow: 3px 3px 0px 0px;
+        }
+        .navigation{
+            margin-bottom: 22px;
+        }
+        .nav{
+            padding: 5px 9px;
+            background-color: #f5f5f5;
+            text-decoration: none;
+            border: 1px solid #f5f5f5;
+            color: #363636;
+        }
+        .nav:hover{
+            box-shadow: 2px 2px 0px 0px;
+            border: 1px solid #363636;
+            transition: 50ms;
+            font-weight: bold;
+        }
+        .task__answer{
+            margin-bottom: 20px;
+        }
+        .answer__element{
+            border-left: orangered 1px solid;
+            padding-left: 14px;
+        }
+        .answer__code{
+            padding-left: 14px;
+            border-left: 4px solid #0036c2;
+        }
+    </style></head>
+<body>
+<div id="wrapper">
+    <h1>Java Script Lesson 6</h1>
+    <div class="navigation">
+        <a class="nav" href="#1">1</a>
+        <a class="nav" href="#2">2</a>
+        <a class="nav" href="#3">3</a>
+        <a class="nav" href="#4">4</a>
+        <a class="nav" href="#5">5</a>
+        <a class="nav" href="#6">6</a>
+        <a class="nav" href="#7">7</a>
+        <a class="nav" href="#8">8</a>
+        <a class="nav" href="#9">9</a>
+        <a class="nav" href="#c10">10</a>
+        <a class="nav" href="#11">11</a>
+        <a class="nav" href="#12">12</a>
+        <a class="nav" href="#13">13</a>
+        <a class="nav" href="#14">14</a>
+        <a class="nav" href="#15">15</a>
+        <a class="nav" href="#16">16</a>
+    </div>
+        <div id="1" class="task">
+            <div class="task__name">
+                <div class="task__number">1</div>
+                <div class="task__title">Classwork</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    Дано список імен. <br>
+                    let n1 = 'Harry..Potter'<br>
+                    let n2 = 'Ron---Whisley'<br>
+                    let n3 = 'Hermione__Granger'<br>
+                    Написати функцію, яка приймає будь яке не валідне імя, та нормалізує його в наступнйи вигляд<br>
+                    let n1 = 'Harry Potter'<br>
+                    let n2 = 'Ron Whisley'<br>
+                    let n3 = 'Hermione Granger'<br>
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let fn_ans_code=(text)=>document.write('<p class="answer__code">' + text + '</p>')
+                        let n1 = 'Harry..Potter'
+                        let n2 = 'Ron---Whisley'
+                        let n3 = 'Hermione__Granger'
+                        let clearName=(text)=>document.write(text.replaceAll('..', ' ').replaceAll('---',' ').replaceAll('__',' ')+'<br>')
+                        clearName(n1)
+                        clearName(n2)
+                        clearName(n3)
+                        fn_ans_code(`let clearName=(text)=>document.write(text.replaceAll('..', ' ').replaceAll('---',' ').replaceAll('__',' '))`)
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="2" class="task">
+            <div class="task__name">
+                <div class="task__number">2</div>
+                <div class="task__title">Classwork</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    a) створити функцію, яка генерує масив рандомних числових цілих значень в діапазоні від 0 до 100.<br>
+                    б) створити (або згенерувати, за допомоги попередньої функції) масив рандомних цілих числових значень. Відсортувати його за допомоги sort.<br>
+                    в) створити (або згенерувати, за допомоги попередньої функції) масив рандомних цілих числових значень. відфільтрувати  його за допомоги filter, залишивши тільки парні числа.<br>
+                    г) створити масив рандомних цілих числових значень (або згенерувати, за допомоги попередньої функції) . за допомоги map та колбеку перетворити всі об'єкти в масиві на стрінгові.<br>
+                    д) створити функцію sortNums(direction), яка прймає масив чисел, та сортує його від більшого до меньшого, або навпаки в залежності від значення аргументу direction.<br>
+                    let nums = [11,21,3];<br>
+                    sortNums('ascending') // [3,11,21]<br>
+                    sortNums('descending') // [21,11,3]<br>
+                </p>
+            </div>
+            <div id="#2" class="task__answer">
+                <h4>Результат</h4>
+                <p class="answer__element">
+                    а) створена функція яка приймає два аргументи та створює масив чисел: count - кількість елементів масиву, limit - максимальне значення рандомайзеру.<br>
+                    <script>
+                        let randomArray=(count,limit)=>{
+                            let empty = []
+                            for (let i=0; i<=count;i++){
+                                empty.push(Math.ceil(Math.random()*limit))
+                            }
+                            return empty
+                        }
+                        let sortFromLow = randomArray(10, 200)
+                        document.write(sortFromLow);
+                    </script>
+                </p>
+                <p class="answer__element">
+                    б) За основу взято попередній масив.<br>
+                    <script>
+                        document.write('Несортований масив: ' + sortFromLow + '<br>');
+                        document.write('Сортування від меншjго до більшого: ' + sortFromLow.sort((a,b)=>a-b) + '<br>');
+                        document.write('Сортування від більшого до меншого: ' + sortFromLow.sort((a,b)=>b-a) + '<br>');
+                    </script>
+                </p>
+                <p class="answer__element">
+                    в) За основу взято попередній масив, який буде відфільтровано до парних чисел<br>
+                    <script>
+                        document.write('Нефільтрований мсив: ' + sortFromLow.filter((num)=>num % 2 === 0) + '<br>');
+                    </script>
+                </p>
+                <p class="answer__element">
+                    г) За основу взято попередній масив.<br>
+                    <script>
+                        document.write(sortFromLow + '<br>')
+                        let arraToString = sortFromLow.map((elemet)=>elemet.toString())
+                        document.write('Виведемо тип елементу масиву з індексом 0: число ' + arraToString[0] + ' являється типом ' + typeof arraToString[0]);
+                    </script>
+                </p>
+                <p class="answer__element">
+                    д) За основу взято попередній масив.<br>
+                    <script>
+                        let sortNums=(arr, direction)=>{
+                            let res = direction === 'ascending' ? 'Масив відсортовано від меншого до більшого: ' + arr.sort((a,b)=>a-b) + '<br>'
+                                    : direction === 'descending' ? 'Масив відсортовано від більшого до меншого: ' + arr.sort((a,b)=>b-a) + '<br>' : 'Оберіть метод сортування'
+                            return res
+                        }
+                        document.write(sortNums(sortFromLow, 'descending'))
+                        document.write(sortNums(sortFromLow, 'ascending'))
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="3" class="task">
+            <div class="task__name">
+                <div class="task__number">3</div>
+                <div class="task__title">Classwork</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    є масив:<br>
+                        let coursesAndDurationArray = [<br>
+                        {title: 'JavaScript Complex', monthDuration: 5},<br>
+                        {title: 'Java Complex', monthDuration: 6},<br>
+                        {title: 'Python Complex', monthDuration: 6},<br>
+                        {title: 'QA Complex', monthDuration: 4},<br>
+                        {title: 'FullStack', monthDuration: 7},<br>
+                        {title: 'Frontend', monthDuration: 4}<br>
+                        ];<br>
+                    a) відсортувати його за спаданням за monthDuration<br>
+                    б) відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців<br>
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p class="answer__element">
+                    <p>
+                        Результати виведено в консоль
+                    </p>
+            </p>
+                    <script>
+                        let coursesAndDurationArray = [
+                            {title: 'JavaScript Complex', monthDuration: 5},
+                            {title: 'Java Complex', monthDuration: 6},
+                            {title: 'Python Complex', monthDuration: 6},
+                            {title: 'QA Complex', monthDuration: 4},
+                            {title: 'FullStack', monthDuration: 7},
+                            {title: 'Frontend', monthDuration: 4}
+                        ];
+                        let sortCourses = coursesAndDurationArray.sort((a, b) => a.monthDuration - b.monthDuration)
+                        console.log(sortCourses)
+                        fn_ans_code('Метод сортування масиву: let sortCourses = coursesAndDurationArray.sort((a, b) => a.monthDuration - b.monthDuration)')
+                        let filterCourse=(coursesAndDurationArray.filter((montDur)=>montDur.monthDuration>5))
+                        console.log(filterCourse)
+                        fn_ans_code('Метод фільтрування масиву: let filterCourse=(coursesAndDurationArray.filter((montDur)=>montDur.monthDuration>5))')
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="4" class="task">
+            <div class="task__name">
+                <div class="task__number">4</div>
+                <div class="task__title">Homework</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    a) Знайти та вивести довижину настипних стрінгових значень<br>
+                    'hello world', 'lorem ipsum', 'javascript is cool'<br>
+                    б) Перевести до великого регістру наступні стрінгові значення<br>
+                    'hello world', 'lorem ipsum', 'javascript is cool'<br>
+                    в) Перевести до нижнього регістру настипні стрінгові значення<br>
+                    'HELLO WORLD', 'LOREM IPSUM', 'JAVASCRIPT IS COOL'<br>
+                    г) Є "брудна" стрінга let str = ' dirty string   '. Почистити її від зайвих пробілів.<br>
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p class="answer__element">
+                     <script>
+                        let str1 = 'hello world'
+                        let str2 = 'lorem ipsum'
+                        let str3 = 'javascript is cool'
+                        let calcLenght=(text)=>document.write('Довжина строки ' + text + ' = ' + text.length + '<br>')
+                        calcLenght(str1)
+                        calcLenght(str2)
+                        calcLenght(str3)
+                        fn_ans_code(`Код обчислення довжини строки: let calcLenght=(text)=>document.write('Довжина строки ' + text + ' = ' + text.length)`)
+                    </script>
+                </p>
+                <p class="answer__element">
+                     <script>
+                        let upper=(text)=>document.write('Початкове значення ' + text + ', кінцеве значення ' + text.toUpperCase() + '<br>')
+                        upper(str1)
+                        upper(str2)
+                        upper(str3)
+                        fn_ans_code(`let upper=(text)=>document.write('Початкове значення ' + text + ', кінцеве значення ' + text.toUpperCase())`)
+                    </script>
+                </p>
+                <p class="answer__element">
+                     <script>
+                         let str4 = 'HELLO WORLD'
+                         let str5 = 'LOREM IPSUM'
+                         let str6 = 'JAVASCRIPT IS COOL'
+                        let lower=(text)=>document.write('Початкове значення ' + text + ', кінцеве значення ' + text.toLowerCase() + '<br>')
+                        lower(str4)
+                        lower(str5)
+                        lower(str6)
+                        fn_ans_code(`let lower=(text)=>document.write('Початкове значення ' + text + ', кінцеве значення ' + text.toLowerCase())`)
+                    </script>
+                </p>
+                <p class="answer__element">
+                     <script>
+                         let str7 = ' dirty string '
+                        let clearText=(text)=>document.write('Початкове значення ' + text + ', кінцеве значення ' + text.trim() + '<br>')
+                        lower(str7)
+                        fn_ans_code(`let clearText=(text)=>document.write('Початкове значення ' + text + ', кінцеве значення ' + text.trim())`)
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="5" class="task">
+            <div class="task__name">
+                <div class="task__number">5</div>
+                <div class="task__title">Homework</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    - Напишіть функцію stringToarray(str), яка перетворює рядок на масив слів.<br>
+                    let str = 'Каждый охотник желает знать';<br>
+                    let arr = stringToarray(str);<br>
+                    document.writeln(arr); // ['Каждый', 'охотник', 'желает', 'знать']<br>
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let str8 = 'Каждый охотник желает знать'
+                        let stringToArray = (text) => text.split(' ')
+                        let arr = stringToArray(str8)
+                        document.writeln(arr)
+                        console.log(arr);
+                        fn_ans_code('let stringToArray = (text) => text.split(\' \')')
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="6" class="task">
+            <div class="task__name">
+                <div class="task__number">6</div>
+                <div class="task__title">Homework</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    - Напишіть функцію stringToarray(str), яка перетворює рядок на масив слів.<br>
+                    let str = 'Каждый охотник желает знать';<br>
+                    let arr = stringToarray(str);<br>
+                    document.writeln(arr); // ['Каждый', 'охотник', 'желает', 'знать']<br>
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let strToArray = (text) => text.split(' ')
+                        let arre = strToArray(str8)
+                        document.writeln(arre)
+                        console.log(arre);
+                        fn_ans_code('let stringToArray = (text) => text.split(\' \')')
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="7" class="task">
+            <div class="task__name">
+                <div class="task__number">7</div>
+                <div class="task__title">Homework</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    - Напишіть функцію delete_characters(str, length), яка повертає підрядок, що складається із зазначеної кількості символів.<br>
+                    let str = 'Каждый охотник желает знать';<br>
+                    document.writeln(delete_characters(str, 7)); // Каждый<br>
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let str9 = 'Каждый охотник желает знать'
+                        let delete_characters=(str, length)=>str.substr(0,length)
+                        console.log(delete_characters(str9,7));
+                        document.write(delete_characters(str9,7))
+                        fn_ans_code('let delete_characters=(str, length)=>str.substr(0,length)')
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="8" class="task">
+            <div class="task__name">
+                <div class="task__number">8</div>
+                <div class="task__title">Homework</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    Напишіть функцію insert_dash(str), яка приймає рядок str як аргумент і вставляє тире (-) між словами. При цьому всі символи рядка необхідно перевести у верхній регістр.<br>
+                    let str = "HTML JavaScript PHP";<br>
+                    document.writeln(insert_dash(str)); // 'HTML-JAVASCRIPT-PHP'<br>
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let str10 = "HTML JavaScript PHP"
+                        let insert_dash=(str)=>document.write(str.replaceAll(' ','-').toUpperCase())
+                        insert_dash(str10)
+                        fn_ans_code('let insert_dash=(str)=>document.write(str.replaceAll(\' \',\'-\').toUpperCase())')
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="9" class="task">
+            <div class="task__name">
+                <div class="task__number">9</div>
+                <div class="task__title">Homework</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    Напишіть функцію, яка приймає рядок як аргумент і перетворює регістр першого символу рядка з нижнього регістру у верхній.
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let str11 = "html javascript php"
+                        let firstToUpper=(str)=>str.toLowerCase().substring(0,1).toUpperCase() + str.substring(1)
+                        console.log(firstToUpper(str11));
+                        document.write('Початковий текст: ' + str11 + '<br>' + 'Кінцевий результат: ' + firstToUpper(str11))
+                        fn_ans_code(`let firstToUpper=(str)=>str.toLowerCase().substring(0,1).toUpperCase() + str.substring(1)`)
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="10" class="task">
+            <div class="task__name">
+                <div class="task__number">10</div>
+                <div class="task__title">Homework</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    Напишіть функцію capitalize(str), яка повертає рядок, у якому кожне слово починається з великої літери.
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let str12 = "html, javascript php, всі в ділах тралала"
+                        let eachWordToUp=(str)=> {
+                                let res = str.replaceAll(' ', '*+').split('+')
+                            let empty = []
+                            for (const re of res) {
+                                empty.push(re.substring(0,1).toUpperCase()+re.substring(1))
+                            }
+                               return empty.toString().replaceAll('*,', ' ')
+                        }
+                        console.log(eachWordToUp(str12));
+                        document.write(`Початковий текст: ` + str12 + '<br>' + 'Результат: ' +  eachWordToUp(str12));
+                        fn_ans_code(`let eachWordToUp=(str)=> {<br>
+                                let res = str.replaceAll(' ', '*+').split('+')<br>
+                            let empty = []<br>
+                            for (const re of res) {<br>
+                                empty.push(re.substring(0,1).toUpperCase()+re.substring(1))<br>
+                            }<br>
+                               return empty.toString().replaceAll('*,', ' ')<br>
+                        }`)
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="11" class="task">
+            <div class="task__name">
+                <div class="task__number">11</div>
+                <div class="task__title">Additional</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    - Напишите функцию cutString(str, n), которая делит строку на подстроки, состоящие из n символов.<br>
+                    document.writeln(cutString('наслаждение',3)) // [нас,лаж,ден,ие]
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let str13 = 'наслаждение'
+                        console.log(str13.substring(0, 3));
+                        let cutString = (str,n) => {
+                            let empty = []
+                            for (let i=0; i<str.length;i++){
+                                empty.push(str.substring(i,i+n))
+                                i = i+(n-1)
+                            }
+                            return empty
+                        }
+                        console.log(cutString(str13,3));
+                        document.write(`Початкова строка: наслаждение<br>` + 'Результат: ' + cutString(str13,3))
+                        fn_ans_code(` let str13 = 'наслаждение'<br>
+                        console.log(str13.substring(0, 3));<br>
+                        let cutString = (str,n) => {<br>
+                            let empty = []<br>
+                            for (let i=0; i<str.length;i++){<br>
+                                empty.push(str.substring(i,i+n))<br>
+                                i = i+(n-1)<br>
+                            }<br>
+                            return empty<br>
+                        }`)
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="12" class="task">
+            <div class="task__name">
+                <div class="task__number">12</div>
+                <div class="task__title">Additional</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    Створити функцію-валідатор для адрес електронної пошти. Перевірка повинна включати в себе :данні до знака равлика(@), наявність равлика, крапку яка знаходиться не менше ніж на 2 символі далі після равлика, функція не чутлива до регістру (some@email.com,SOME@EMAIL.COM,some@EMAIL.com, і тд - однакові значення)<br>
+                    Протестувати на значеннях<br>
+                    someemail@gmail.com<br>
+                    someeMAIL@gmail.com<br>
+                    someeMAIL@i.ua<br>
+                    some.email@gmail.com
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let str14 = 'someemail@gmail.com'
+                        let str15 = 'someeMAIL@gmail.com'
+                        let str16 = 'someeMAIL@i.ua.com'
+                        let str17 = 'some.email@gmail.com'
+                        let mailValidator=(mail)=>{
+                            let iKrapka = mail.slice(mail.indexOf(`@`)).indexOf('.')
+                            console.log(iKrapka)
+                            let iRavlik = mail.indexOf('@')
+                            console.log(iRavlik);
+                            let result = iRavlik<1 ? `Відсутній равлик або дані перед равликом` : iKrapka < 2 ? `Мало символів перед крпкою` : `Перевірку пройдено`
+                            return document.write(`Валідація поштової адреси: `+ mail + `. Результат переврки: ` + result)
+                        }
+                        console.log(mailValidator(str16));
+                        fn_ans_code(` let mailValidator=(mail)=>{<br>
+                            let iKrapka = mail.slice(mail.indexOf(\`@\`)).indexOf('.')<br>
+                            console.log(iKrapka)<br>
+                            let iRavlik = mail.indexOf('@')<br>
+                            console.log(iRavlik);<br>
+                            let result = iRavlik<1 ? \`Відсутній равлик або дані перед равликом\` : iKrapka < 2 ? \`Мало символів перед крпкою\` : \`Перевірку пройдено\`<br>
+                            return result<br>
+                        }`)
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="13" class="task">
+            <div class="task__name">
+                <div class="task__number">13</div>
+                <div class="task__title">Additional</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    Відсортувати масив в спадаючому порядку за кількістю елементів в полі modules
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let coursesArray = [
+                            {
+                                title: 'JavaScript Complex',
+                                monthDuration: 5,
+                                hourDuration: 909,
+                                modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+                            },
+                            {
+                                title: 'Java Complex',
+                                monthDuration: 6,
+                                hourDuration: 909,
+                                modules: ['html',
+                                    'css',
+                                    'js',
+                                    'mysql',
+                                    'mongodb',
+                                    'angular',
+                                    'aws',
+                                    'docker',
+                                    'git',
+                                    'java core',
+                                    'java advanced']
+                            },
+                            {
+                                title: 'Python Complex',
+                                monthDuration: 6,
+                                hourDuration: 909,
+                                modules: ['html',
+                                    'css',
+                                    'js',
+                                    'mysql',
+                                    'mongodb',
+                                    'angular',
+                                    'aws',
+                                    'docker',
+                                    'python core',
+                                    'python advanced']
+                            },
+                            {
+                                title: 'QA Complex',
+                                monthDuration: 4,
+                                hourDuration: 909,
+                                modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+                            },
+                            {
+                                title: 'FullStack',
+                                monthDuration: 7,
+                                hourDuration: 909,
+                                modules: ['html',
+                                    'css',
+                                    'js',
+                                    'mysql',
+                                    'mongodb',
+                                    'react',
+                                    'angular',
+                                    'aws',
+                                    'docker',
+                                    'git',
+                                    'node.js',
+                                    'python',
+                                    'java']
+                            },
+                            {
+                                title: 'Frontend',
+                                monthDuration: 4,
+                                hourDuration: 909,
+                                modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+                            }
+                        ];
+                        let sortModules = coursesArray.sort((a,b)=>b.modules.length - a.modules.length)
+                        console.log(sortModules)
+                        fn_ans_code(`let sortModules = coursesArray.sort((a,b)=>b.modules.length - a.modules.length) <br>
+                        console.log(sort)`)
+
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="14" class="task">
+            <div class="task__name">
+                <div class="task__number">14</div>
+                <div class="task__title">Additional</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    - Напишіть функцію count(str, stringsearch), яка повертає кількість символів stringsearch у рядку str.<br>
+                    let symb = "о", str = "Астрономия это наука о небесных объектах";<br>
+                    document.writeln(count(str, symb)) // 5
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        str18 = "Астрономия это наука о небесных объектах"
+                        let count=(str, stringsearch)=>str.split(stringsearch).length-1
+                        console.log(count(str18,"о"))
+                        fn_ans_code(`let count=(str, stringsearch)=>str.split(stringsearch).length-1<br>
+                        console.log(count(str18,"о"))`)
+                    </script>
+                </p>
+            </div>
+        </div>
+        <div id="15" class="task">
+            <div class="task__name">
+                <div class="task__number">15</div>
+                <div class="task__title">Additional</div>
+            </div>
+            <div class="task__describe">
+                <h4>Завдання</h4>
+                <p>
+                    - Напишіть функцію cutString(str, n), яка видаляє зайві слова з рядка str, залишивши у ній n слів.<br>
+                    let str = "Сила тяжести приложена к центру масс тела";<br>
+                    document.writeln(cutString(str, 5)) // 'Сила тяжести приложена к центру'<br>
+                </p>
+            </div>
+            <div class="task__answer">
+                <h4>Результат</h4>
+                <p>
+                    <script>
+                        let str19 = "Сила тяжести приложена к центру масс тела"
+                        let cutStringWord=(str, n)=> str.split(' ').slice(0,n).join(' ')
+                        console.log(cutStringWord(str19, 5));
+                    </script>
+                </p>
+            </div>
+        </div>
+</div>
+</body>
+</html>

@@ -49,39 +49,39 @@
   tagH4('1. Cтворити функцію яка приймає три числа та виводить найменьше. (Без Math.min!)')
   let min = (a,b,c) => {
       if (a<b && a<c){
-          document.write('Найменшим числом є ' + a)
+          dw('Найменшим числом є ' + a)
       } else if(b<a &&b<c){
-          document.write('Найменшим числом є ' + b)
+          dw('Найменшим числом є ' + b)
       } else if (c<a && c<b){
-          document.write('Найменшим числом є ' + c)
+          dw('Найменшим числом є ' + c)
       } else {
-          document.write('Щось пішло не так')
+          dw('Щось пішло не так')
       }
   }
   min(-25,3,0)
   br(1)
   //варіант тернарним методом
-  let min2 = (a,b,c) => (a<b && a<c) ? document.write('Найменшим числом є ' + a) : (b<a && b<c) ? document.write('Найменшим числом є ' + b) : (c<a && c<b) ? document.write('Найменшим числом є ' + c) : document.write('Щось пішло не так')
+  let min2 = (a,b,c) => (a<b && a<c) ? dw('Найменшим числом є ' + a) : (b<a && b<c) ? dw('Найменшим числом є ' + b) : (c<a && c<b) ? dw('Найменшим числом є ' + c) : dw('Щось пішло не так')
   min2(-25,-33,0)
 hrbr()
 //___________________
   tagH4('2. Cтворити функцію яка приймає три числа та виводить найбільше. (Без Math.max!)')
   let max = (a,b,c) => {
       if (a>b && a>c){
-          document.write('Найбільшим числом є ' + a)
+          dw('Найбільшим числом є ' + a)
       } else if(b>a && b>c){
-          document.write('Найбільшим числом є ' + b)
+          dw('Найбільшим числом є ' + b)
       } else if (c>a && c>b){
-          document.write('Найбільшим числом є ' + c)
+          dw('Найбільшим числом є ' + c)
       } else {
-          document.write('Щось пішло не так')
+          dw('Щось пішло не так')
       }
   }
   max(-25,3,0)
 br(1)
 
   //варіант тернарним методом
-  let max2 = (a,b,c) => (a>b && a>c) ? document.write('Найбільшим числом є ' + a) : (b>a && b>c) ? document.write('Найбільшим числом є ' + b) : (c>a && c>b) ? document.write('Найбільшим числом є ' + c) : document.write('Щось пішло не так')
+  let max2 = (a,b,c) => (a>b && a>c) ? dw('Найбільшим числом є ' + a) : (b>a && b>c) ? dw('Найбільшим числом є ' + b) : (c>a && c>b) ? dw('Найбільшим числом є ' + c) : dw('Щось пішло не так')
   max2(-25,-33,0)
 hrbr()
 //__________________
@@ -93,7 +93,7 @@ hrbr()
               max = element
           }
       }
-      document.write('Найбільшим в масиві є число ' + max)
+      dw('Найбільшим в масиві є число ' + max)
   }
 arrayMax(masiv)
 hrbr()
@@ -106,7 +106,7 @@ let arrayMin = (temp) => {
             min = minElement
         }
     }
-    document.write('Найменшим в масиві є число ' + min)
+    dw('Найменшим в масиві є число ' + min)
 }
 arrayMin(masiv)
 hrbr()
@@ -117,7 +117,7 @@ hrbr()
       for (const sumElement of temp) {
           sum = sum + sumElement
       }
-      document.write('Сума елементів масиву = ' + sum)
+      dw('Сума елементів масиву = ' + sum)
   }
 summury(masiv)
 hrbr()
@@ -128,7 +128,7 @@ hrbr()
       for (const tempElement of temp) {
           avrg += tempElement
       }
-      document.write('Середнє арифметичне значення масиву = ' + (avrg/temp.length))
+      dw('Середнє арифметичне значення масиву = ' + (avrg/temp.length))
   }
 average(masiv)
 hrbr()
@@ -145,7 +145,7 @@ hrbr()
           }
       }
       dw('console.log(' + max + ')<br>')
-      document.write('Найменше число масиву = ' + min)
+      dw('Найменше число масиву = ' + min)
   }
 minMax(2,-1,0,100,20,-50)
 hrbr()
@@ -156,9 +156,9 @@ hrbr()
       for (let i=0; i < lenght; i++ ){
           empty.push(Math.ceil(Math.random()*100))
       }
-      document.write('Ви створили масив з '+lenght+' чисел: ' + empty)
+      dw('Ви створили масив з '+lenght+' чисел: ' + empty)
   }
-random(22)
+random(10)
 hrbr()
 //__________________
   tagH4('9. Створити функцію яка заповнює масив рандомними числами в діапазоні від 0 до limit. limit - аргумент, який характеризує кінцеве значення діапазону.\n')
@@ -167,7 +167,7 @@ hrbr()
       for (let i=0; i<lenght;i++){
           empty.push(Math.ceil(Math.random()*limit))
       }
-      document.write('Ви створили масив з ' +lenght+ ' чисел та максимальним значенням ' +limit+ ': ' + empty)
+      dw('Ви створили масив з ' +lenght+ ' чисел та максимальним значенням ' +limit+ ': ' + empty)
   }
 randomLimit(15,50)
 hrbr()

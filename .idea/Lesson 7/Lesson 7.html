@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 7</title>
+</head>
+<body>
+<script>
+    //=================HOMEWORK=====================
+    /*1. - Створити функцію конструктор для об'єктів User з полями id, name, surname , email, phone.
+    Створити пустий масив, наповнити його 10 об'єктами new User(....)*/
+    console.log(`== 1 =================`);
+
+    function User (id, name, surname ,email, phone){
+        this.id = id;
+        this.name = name.charAt(0).toUpperCase()+name.substring(1);
+        this.surname =  surname.charAt(0).toUpperCase() + surname.substring(1);
+        this.email = email.indexOf('@')>1 && email.substring(email.indexOf('@')).indexOf('.')>2 ? email : `НЕКОРЕКТНА ПОШТОВА АДРЕСА`;
+        this.phone = phone.replaceAll('+38','').replaceAll(' ','').replaceAll('-','')
+    }
+    let users = [
+    new User (2, 'kiril', 'familia', 'somemail@mail.ua', '+380-50 203 21 23'),
+    new User (3, 'Antonio', 'familia', 'somemail@mail.ua', '+380-50 203-52 23'),
+    new User (1, 'gary', 'familia', 'somemail@il.ua', '+380-50 203-52 23'),
+    new User (4, 'valera', 'familia', 'somemail@l.ua', '+380-50203-52 23'),
+    new User (6, 'vasya', 'familia', 'somemail@mail.ua', '+380-67 203-52 23'),
+    new User (5, 'dimon', 'familia', 'somemail@mail.ua', '+380-95 203-52 23'),
+    new User (9, 'Kolia', 'familia', 'somemail@mail.ua', '+380-63 203-52 -23'),
+    new User (8, 'Miha', 'familia', 'somemail@mail.ua', '+380-35 203-52 --23'),
+    new User (7, 'brad', 'familia', 'somemail@mail.ua', '+380-44 -203-52 23'),
+    new User (10, 'Pitt', 'familia', 'somemail@mail.ua', '+380-22 203-52 23'),
+    ]
+    console.log(users);
+
+    /*2.- Взяти масив з  User[] з попереднього завдання, та відфільтрувати , залишивши тільки об'єкти з парними id (filter)*/
+    console.log(`== 2 =================`);
+    let userFilter = users.filter((filter)=> filter.id % 2 === 0)
+    console.log(userFilter);
+
+    /*3.- Взяти масив з  User[] з попереднього завдання, та відсортувати його по id. по зростанню (sort)*/
+    console.log(`== 3 =================`);
+    let userSort = users.sort((a,b)=>a.id - b.id)
+    console.log(userSort);
+
+    /*4. Cтворити класс для об'єктів Client з полями id, name, surname , email, phone, order (поле є масивом зі списком товарів)
+створити пустий масив, наповнити його 10 об'єктами Client*/
+    console.log(`== 4 =================`);
+    class Client {
+        constructor(id, name, surname , email, phone, order) {
+            this.id = id,
+            this.name = name,
+            this.surname = surname,
+            this.email = email,
+            this.phone = phone,
+            this.order = order
+        }
+    }
+    let clientArray = [
+        new Client(1,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3', 'tovar4', 'tovar5','tovar6','tovar7','tovar8']),
+        new Client(3,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3', 'tovar4', 'tovar5','tovar6']),
+        new Client(2,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3', 'tovar4']),
+        new Client(8,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3', 'tovar4', 'tovar5','tovar6','tovar7']),
+        new Client(7,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2']),
+        new Client(6,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3', 'tovar4']),
+        new Client(5,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3']),
+        new Client(9,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3', 'tovar4', 'tovar5','tovar6']),
+        new Client(4,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3', 'tovar4', 'tovar5','tovar6','tovar7']),
+        new Client(10,'vadik','familia','somemail@mail.ua','+380502103654',['tovar1', 'tovar2', 'tovar3', 'tovar4']),
+    ]
+    console.log(clientArray);
+
+    /*5. Взяти масив (Client [] з попереднього завдання).Відсортувати його по кількості товарів в полі order по зростанню. (sort)*/
+    console.log(`== 5 =================`);
+    let sortOrderCount = clientArray.sort((a,b)=>b.order.length - a.order.length)
+    console.log(sortOrderCount);
+
+
+    //=========================ClassWork==========================
+    console.log(`=======================ClassWork=======================`);
+    /* 6. Створити функцію конструктор яка дозволяє створювати об'єкти car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна. додати в об'єкт функції:
+-- drive () - яка виводить в консоль `їдемо зі швидкістю ${максимальна швидкість} на годину`
+-- info () - яка виводить всю інформацію про автомобіль в форматі `назва поля - значення поля`
+-- increaseMaxSpeed (newSpeed) - яка підвищує значення максимальної швидкості на значення newSpeed
+-- changeYear (newValue) - змінює рік випуску на значення newValue
+-- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і додає його в поточний об'єкт car*/
+    console.log(`== 6 =================`);
+    function Car(model, manufactured, year, maxSpeed, engineVolume) {
+                this.model = model
+                this.manufactured = manufactured
+                this.year = year
+                this.maxSpeed = maxSpeed
+                this.engineVolume = engineVolume
+            this.info = function (){
+                console.log({
+                    model: this.model,
+                    manufactured: this.manufactured,
+                    year: this.year,
+                    maxSpeed: this.maxSpeed,
+                    engineVolume: this.engineVolume});
+            }
+            this.drive = function (){
+                    console.log(`Їдемо зі швидкістю ${maxSpeed} на годину`);
+                }
+            this.increaseMaxSpeed = function (newSpeed){
+                    console.log(this.maxSpeed += newSpeed);
+                }
+            this.changeYear = function (newValue){
+                    console.log(this.year = newValue);
+                }
+            this.addDriver = function (driver){
+                    console.log(this.driver = driver);
+                }
+
+        }
+
+    let newCar = new Car('gt 500', 'Ford', 1980, 250, 2.2)
+    newCar.drive()
+    newCar.changeYear(1990)
+    newCar.increaseMaxSpeed(50)
+    newCar.addDriver({name: 'Antonio', surname: 'Banderas', age: 50})
+    console.log(newCar);
+    newCar.info()
+
+    /* 7. (Те саме, тільки через клас)
+    Створити клас який дозволяє створювати об'єкти car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна. додати в об'єкт функції:
+    -- drive () - яка виводить в консоль `їдемо зі швидкістю ${максимальна швидкість} на годину`
+    -- info () - яка виводить всю інформацію про автомобіль в форматі `назва поля - значення поля`
+    -- increaseMaxSpeed (newSpeed) - яка підвищує значення максимальної швидкості на значення newSpeed
+    -- changeYear (newValue) - змінює рік випуску на значення newValue
+    -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і додає його в поточний об'єкт car*/
+    console.log(`== 7 =================`);
+
+    class Cars {
+        constructor(model, manufactured, year, maxSpeed, engineVolume) {
+        this.model = model
+        this.manufactured = manufactured
+        this.year = year
+        this.maxSpeed = maxSpeed
+        this.engineVolume = engineVolume
+        this.info = function (){
+            console.log({
+                model: this.model,
+                manufactured: this.manufactured,
+                year: this.year,
+                maxSpeed: this.maxSpeed,
+                engineVolume: this.engineVolume});
+        }
+        this.drive = function (){
+            console.log(`Їдемо зі швидкістю ${maxSpeed} на годину`);
+        }
+        this.increaseMaxSpeed = function (newSpeed){
+            console.log(this.maxSpeed += newSpeed);
+        }
+        this.changeYear = function (newValue){
+            console.log(this.year = newValue);
+        }
+        this.addDriver = function (driver){
+            console.log(this.driver = driver);
+        }
+    }
+    }
+let newClassCars = new Cars('gt 500', 'Ford', 1980, 250, 2.2)
+    console.log(newClassCars);
+    newClassCars.info()
+    newClassCars.drive()
+    newClassCars.increaseMaxSpeed(90)
+    newClassCars.increaseMaxSpeed(50)
+    newClassCars.changeYear(1930)
+    newClassCars.addDriver({name: 'John', surname: 'Doe', age: 40})
+
+    /* 8. Cтворити класс/функцію конструктор попелюшка з полями ім'я, вік, розмір ноги. Створити масив з 10 попелюшок.
+Сторити об'єкт класу "принц" за допомоги класу який має поля ім'я, вік, туфелька яку він знайшов.
+За допомоги циклу знайти яка попелюшка повинна бути з принцом.
+*/
+    console.log(`== 8 =================`);
+    class Popelushka {
+        constructor(name, age, footSize) {
+            this.name = name;
+            this.age = age;
+            this.footSize = footSize
+        }
+    }
+    let arrayOfPopel = [
+        new Popelushka('Anna', 1, 10),
+        new Popelushka('Nadia', 2, 9),
+        new Popelushka('Sofia', 3, 8),
+        new Popelushka('Kristina', 4, 7),
+        new Popelushka('Jane', 5, 6),
+        new Popelushka('Sofia', 6, 5),
+        new Popelushka('Valia', 7, 4),
+        new Popelushka('Katia', 8, 3),
+        new Popelushka('Saschka', 9, 2),
+        new Popelushka('Nika', 10, 5)
+    ]
+    console.log(arrayOfPopel);
+    class Prince{
+        constructor(name, age, findeFoot) {
+            this.name = name;
+            this.age = age;
+            this.findFoot = findeFoot
+        }
+    }
+    let prince1 = new Prince('Vladiolus', 6, 5)
+    console.log(prince1);
+    function yourPopel (arrayOfPopel, prince1){
+        for (const arrayOfPopelElement of arrayOfPopel) {
+            if (arrayOfPopelElement.footSize === prince1.findFoot){
+                console.log(`${prince1.name}, your woman is ${arrayOfPopelElement.name}`);
+                break
+            }
+        }
+    }
+    yourPopel(arrayOfPopel,prince1)
+
+    console.log(`== Додатково, знайти необхідну попелюшку за допомоги функції масиву find та відповідного колбеку==`);
+    let findWoman = arrayOfPopel.find((finder)=>finder.footSize === prince1.findFoot)
+    console.log(`${prince1.name} your woman is ${findWoman.name}`);
+
+
+
+    //=========================Additional==========================
+    console.log(`==================Additional==================`)
+    console.log(`== 9 =================`);
+
+
+    /*{
+        id: 1,
+        name: 'Leanne Graham',
+        username: 'Bret',
+        email: 'Sincere@april.biz',
+        address: {
+
+            street: 'Kulas Light',
+            suite: 'Apt. 556',
+            city: 'Gwenborough',
+            zipcode: '92998-3874',
+            geo: {
+            lat: '-37.3159',
+            lng: '81.1496'
+        }
+    },
+        phone: '1-770-736-8031 x56442',
+        website: 'hildegard.org',
+        company: {
+            name: 'Romaguera-Crona',
+            catchPhrase: 'Multi-layered client-server neural-net',
+            bs: 'harness real-time e-markets'
+    }
+    }*/
+    class userInfo {
+        constructor(id, name, username, email, street, suite, city, zipcode, lat, lng, phone, website, cname, catchPhrase, bs) {
+            this.id = id
+            this.name = name
+            this.username = username
+            this.email = email
+            this.address = {
+                street: street,
+                suite: suite,
+                zipcode: zipcode,
+                geo: {
+                    lat: lat,
+                    lng: lng
+                }
+            }
+            this.phone = phone
+            this.website = website
+            this.company = {
+                cname: cname,
+                catchPhrase: catchPhrase,
+                bs: bs
+            }
+        }
+    }
+    let userAdd = new userInfo(1,'Leanne Graham','Bret', 'Sincere@april.biz','Kulas Light','Apt. 556', 'Gwenborough', '92998-3874', '-37.3159', '81.1496', '1-770-736-8031 x56442', 'hildegard.org', 'Romaguera-Crona', 'Multi-layered client-server neural-net', 'harness real-time e-markets')
+    console.log(userAdd);
+
+    console.log(`== 10 =================`);
+
+    /*-  Створити функцію конструктор / клас  який описує об'єкт тегу
+Поля :
+ -назва тегу ()
+ - опис його дій
+ - масив з атрибутами (2-3 атрибути максимум)
+ Кожен атрибут описати як окремий який буде містити
+ -назву атрибуту
+ -опис дії атрибуту
+ інформацію брати з htmlbook.ru
+
+ Таким чином описати теги
+ -a
+ -div
+ -h1
+ -span
+ -input
+ -form
+ -option
+ -select
+ Приклад результуючого об'єкту
+   {
+        titleOfTag: 'area',
+        action: `Каждый элемент <area> определяет активные области изображения, которые являются ссылками...`,
+        attrs: [
+        {titleOfAttr: 'accesskey', actionOfAttr: 'Переход к области с помощью комбинации клавиш'},
+        {/*some props and values*/
+
+    class TagDescribe{
+    constructor(titleOfTag,action,attr) {
+        this.titleOfTag = titleOfTag,
+        this.action = action,
+        this.attr = attr
+    }
+    }
+
+    let tag1 = new TagDescribe('area',
+        `Каждый элемент <area> определяет активные области изображения, которые являются ссылками...`,
+        [{titleOfAttr: 'accesskey', actionOfAttr: 'Переход к области с помощью комбинации клавиш'},
+        {titleOfAttr: 'coords', actionOfAttr: 'Устанавливает координаты активной области.'},
+        {titleOfAttr: 'download', actionOfAttr: 'Предлагает скачать указанный по ссылке файл.'},
+        {titleOfAttr: 'href', actionOfAttr: 'Задает адрес документа, на который следует перейти.'}]
+        )
+    let tag2 = new TagDescribe('div',
+        `Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого. Как правило, вид блока управляется с помощью стилей. Чтобы не описывать каждый раз стиль внутри тега, можно выделить стиль во внешнюю таблицу стилей, а для тега добавить атрибут class или id с именем селектора.`,
+        [{titleOfAttr: 'align', actionOfAttr: 'Задает выравнивание содержимого тега <div>'},
+        {titleOfAttr: 'title', actionOfAttr: 'Добавляет всплывающую подсказку к содержимому.'}]
+        )
+    let tag3 = new TagDescribe('h1',
+        `HTML предлагает шесть заголовков разного уровня, которые показывают относительную важность секции, расположенной после заголовка. Так, тег <h1> представляет собой наиболее важный заголовок первого уровня, а тег <h6> служит для обозначения заголовка шестого уровня и является наименее значительным.`,
+        [{titleOfAttr: 'align', actionOfAttr: 'Определяет выравнивание заголовка.'}]
+        )
+    let tag4 = new TagDescribe('span',
+        `Тег <span> предназначен для определения строчных элементов документа. В отличие от блочных элементов, таких как <table>, <p> или <div>, с помощью тега <span> можно выделить часть информации внутри других тегов и установить для нее свой стиль. Например, внутри абзаца (тега <p>) можно изменить цвет и размер первой буквы, если добавить начальный и конечный тег <span> и определить для него стиль текста. Чтобы не описывать каждый раз стиль внутри тега, можно выделить стиль во внешнюю таблицу стилей, а для тега добавить атрибут class или id с именем селектора.`,
+        [{titleOfAttr: 'accesskey', actionOfAttr: 'Позволяет получить доступ к элементу с помощью заданного сочетания клавиш.'},
+        {titleOfAttr: 'class', actionOfAttr: 'Определяет имя класса, которое позволяет связать тег со стилевым оформлением.'},
+        {titleOfAttr: 'contenteditable', actionOfAttr: 'Сообщает, что элемент доступен для редактирования пользователем.'}]
+        )
+    let tag5 = new TagDescribe('input',
+        `Тег <input> является одним из разносторонних элементов формы и позволяет создавать разные элементы интерфейса и обеспечить взаимодействие с пользователем. Главным образом <input> предназначен для создания текстовых полей, различных кнопок, переключателей и флажков. Хотя элемент <input> не требуется помещать внутрь контейнера <form>, определяющего форму, но если введенные пользователем данные должны быть отправлены на сервер, где их обрабатывает серверная программа, то указывать <form> обязательно. То же самое обстоит и в случае обработки данных с помощью клиентских приложений, например, скриптов на языке JavaScript.`,
+        [{titleOfAttr: 'accept', actionOfAttr: `Устанавливает фильтр на типы файлов, которые вы можете отправить через поле загрузки файлов.`},
+        {titleOfAttr: 'accesskey', actionOfAttr: `Переход к элементу с помощью комбинации клавиш.`},
+        {titleOfAttr: 'align', actionOfAttr: `Определяет выравнивание изображения.`}]
+        )
+    let tag6 = new TagDescribe('form',
+        `Тег <form> устанавливает форму на веб-странице. Форма предназначена для обмена данными между пользователем и сервером. Область применения форм не ограничена отправкой данных на сервер, с помощью клиентских скриптов можно получить доступ к любому элементу формы, изменять его и применять по своему усмотрению.`,
+        [{titleOfAttr: 'accept-charset', actionOfAttr: `Устанавливает кодировку, в которой сервер может принимать и обрабатывать данные.`},
+        {titleOfAttr: 'action', actionOfAttr: `Адрес программы или документа, который обрабатывает данные формы.`},
+        {titleOfAttr: 'autocomplete', actionOfAttr: `Включает автозаполнение полей формы.`}]
+        )
+    let tag7 = new TagDescribe('option',
+        `Тег <option> определяет отдельные пункты списка, создаваемого с помощью контейнера <select>. Ширина списка определяется самым широким текстом, указанным в теге <option>, а также может изменяться с помощью стилей. Если планируется отправлять данные списка на сервер, то требуется поместить элемент <select> внутрь формы. Это также необходимо, когда к данным списка идет обращение через скрипты.`,
+        [{titleOfAttr: 'disabled', actionOfAttr: `Заблокировать для доступа элемент списка.`},
+        {titleOfAttr: 'label', actionOfAttr: `Указание метки пункта списка.`},
+        {titleOfAttr: 'selected', actionOfAttr: `Заранее устанавливает определенный пункт списка выделенным.`}]
+        )
+    let tag8 = new TagDescribe('select',
+        `Тег <select> позволяет создать элемент интерфейса в виде раскрывающегося списка, а также список с одним или множественным выбором, как показано далее. Конечный вид зависит от использования атрибута size тега <select>, который устанавливает высоту списка. Ширина списка определяется самым широким текстом, указанным в теге <option>, а также может изменяться с помощью стилей. Каждый пункт создается с помощью тега <option>, который должен быть вложен в контейнер <select>. Если планируется отправлять данные списка на сервер, то требуется поместить элемент <select> внутрь формы. Это также необходимо, когда к данным списка идет обращение через скрипты.`,
+        [{titleOfAttr: 'accesskey', actionOfAttr: `Позволяет перейти к списку с помощью некоторого сочетания клавиш.`},
+        {titleOfAttr: 'autofocus', actionOfAttr: `Устанавливает, что список получает фокус после загрузки страницы.`},
+        {titleOfAttr: 'disabled', actionOfAttr: `Блокирует доступ и изменение элемента.`}]
+        )
+
+    console.log(tag1);
+    console.log(tag2);
+    console.log(tag3);
+    console.log(tag4);
+    console.log(tag5);
+    console.log(tag6);
+    console.log(tag7);
+    console.log(tag8);
+</script>
+<script>
+    //===================================================
+    console.log(`==============================================================`);
+    console.log(document);
+    console.log(document.head);
+    console.log(document.body);
+    console.log(document.title);
+    let metalist = document.head.getElementsByTagName("meta")
+    for (const metalistElement of metalist) {
+        let attributes = metalistElement.attributes
+        console.log(metalist);
+        for (const attr of attributes) {
+            console.log(attr.name);
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
